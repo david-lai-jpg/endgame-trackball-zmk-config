@@ -1,0 +1,80 @@
+layout: {zmk_keyboard: efogtech_trackball_0}
+layers:
+  Default:
+  - {t: '$$mdi:keyboard-return$$', h: Snipe}
+  - {t: '$$mdi:keyboard-esc$$', h: Scroll}
+  - $$mdi:mouse-scroll-wheel$$
+  - {t: Copy, h: Scroll, s: Paste}
+  - $$mdi:mouse-left-click-outline$$
+  - $$mdi:mouse-right-click-outline$$
+  - {t: MB4, h: Extras}
+  - {t: MB5, h: Device}
+  - $$mdi:volume-high$$
+  - $$mdi:tab-plus$$
+  - $$mdi:volume-low$$
+  - $$mdi:tab-minus$$
+  Extras:
+  - Ctl+C
+  - Ctl+V
+  - Ctl+X
+  - Ctl+Z
+  - Ctl+Z
+  - Ctl+C
+  - {t: '$$mdi:transfer$$', type: trans}
+  - Ctl+V
+  - $$mdi:volume-high$$
+  - $$mdi:tab-plus$$
+  - $$mdi:volume-low$$
+  - $$mdi:tab-minus$$
+  Device:
+  - {t: '$$mdi:lightbulb-off-outline$$', s: RGB Off}
+  - {t: '$$mdi:auto-fix$$', s: Effect}
+  - $$mdi:bluetooth-off$$
+  - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
+  - {t: '$$mdi:lightbulb-on-outline$$', s: Toggle}
+  - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
+  - {t: '$$mdi:lock-open-outline$$', s: Studio}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:volume-high$$
+  - $$mdi:tab-plus$$
+  - $$mdi:volume-low$$
+  - $$mdi:tab-minus$$
+  Scroll:
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
+  - {t: '$$mdi:rotate-right$$', s: RstRot}
+  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
+  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
+  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
+  Snipe:
+  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:power-sleep$$
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-right-bold$$
+  - $$mdi:arrow-right-bold$$
+  - $$mdi:arrow-left-bold$$
+  User:
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:volume-high$$
+  - $$mdi:tab-plus$$
+  - $$mdi:volume-low$$
+  - $$mdi:tab-minus$$
