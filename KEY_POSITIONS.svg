@@ -1,177 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   KEY POSITIONS — efogtech_trackball_0
-  Physical layout: 8 radial buttons (top-right, then CCW) + 2 front-mounted encoders
-  Device: 102×91×24mm | Trackball center is the device hub
-  Binding slots: 0-7 = buttons, 8-9 = ENC0 CW/CCW, 10-11 = ENC1 CW/CCW
+  Physical layout: 8 radial buttons + 2 front-mounted encoders × 2 actions = 12 binding slots
+  Button order: left-right pairs, top to bottom
+  Encoder wiring: DECLARE_ENCODERS = <&rotenc_follower 10 8 &rotenc_follower 9 11>
+    Left encoder:  CW → pos 10, CCW → pos 8
+    Right encoder: CW → pos 9,  CCW → pos 11
 -->
-<svg width="860" height="780" xmlns="http://www.w3.org/2000/svg">
+<svg width="820" height="740" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .bg        { fill: #0a0a0a; }
-      .chassis   { fill: #161616; stroke: #333; stroke-width: 1.5; }
+      .chassis   { fill: #151515; stroke: #333; stroke-width: 1.5; }
       .btn       { fill: #2a2a2a; stroke: #00ff88; stroke-width: 2; }
       .enc-body  { fill: #1a1a1a; stroke: #ff9900; stroke-width: 2; }
       .enc-slot  { fill: #1e1e0a; stroke: #ffcc00; stroke-width: 1.5; }
       .trackball { fill: #cc2200; stroke: #ff4422; stroke-width: 2; }
       .tb-shine  { fill: rgba(255,255,255,0.12); }
-      .num-btn   { fill: #ff00ff; font-family: 'Courier New', monospace; font-size: 17px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+      .num       { fill: #ff00ff; font-family: 'Courier New', monospace; font-size: 20px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
       .num-enc   { fill: #ff9900; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
-      .label     { fill: #999; font-family: 'Courier New', monospace; font-size: 10px; text-anchor: middle; dominant-baseline: central; }
-      .label-sm  { fill: #777; font-family: 'Courier New', monospace; font-size: 9px; text-anchor: middle; dominant-baseline: central; }
-      .title     { fill: #fff; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; text-anchor: middle; }
+      .lbl       { fill: #999; font-family: 'Courier New', monospace; font-size: 10px; text-anchor: middle; dominant-baseline: central; }
+      .title     { fill: #fff; font-family: 'Courier New', monospace; font-size: 20px; font-weight: bold; text-anchor: middle; }
       .subtitle  { fill: #888; font-family: 'Courier New', monospace; font-size: 11px; text-anchor: middle; }
-      .section   { fill: #ffff00; font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; }
+      .section   { fill: #ffff00; font-family: 'Courier New', monospace; font-size: 12px; font-weight: bold; }
       .legend    { fill: #ccc; font-family: 'Courier New', monospace; font-size: 11px; dominant-baseline: central; }
-      .enc-label { fill: #ff9900; font-family: 'Courier New', monospace; font-size: 11px; text-anchor: middle; font-weight: bold; }
-      .arrow-ccw { fill: #aaa; font-family: 'Courier New', monospace; font-size: 13px; text-anchor: middle; dominant-baseline: central; }
-      .dim-line  { stroke: #333; stroke-width: 1; stroke-dasharray: 4 3; }
+      .enc-lbl   { fill: #ff9900; font-family: 'Courier New', monospace; font-size: 11px; text-anchor: middle; font-weight: bold; }
+      .dim       { stroke: #333; stroke-width: 1; stroke-dasharray: 4 3; }
+      .tb-text   { fill: rgba(255,255,255,0.3); font-family: 'Courier New', monospace; font-size: 11px; text-anchor: middle; dominant-baseline: central; }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="860" height="780" class="bg"/>
+  <rect width="820" height="740" class="bg"/>
 
   <!-- Title -->
-  <text x="430" y="34" class="title">EFOGTECH TRACKBALL 0 — KEY POSITIONS</text>
-  <text x="430" y="54" class="subtitle">8 buttons (radial, top-right→CCW) + 2 side-mounted encoders × 2 actions = 12 binding slots</text>
+  <text x="410" y="30" class="title">EFOGTECH TRACKBALL 0 — KEY POSITIONS</text>
+  <text x="410" y="48" class="subtitle">8 buttons (L-R pairs, top→bottom) + 2 encoders × 2 dirs = 12 binding slots</text>
 
-  <!-- ─────────────────────────────────────────────────────────────
-       DEVICE DIAGRAM  (centered at 380, 330; ~280×260px footprint)
-       ───────────────────────────────────────────────────────────── -->
+  <!-- ───── DEVICE DIAGRAM ───── -->
+  <!-- Chassis: rounded square, centered at (410, 280) -->
+  <rect x="110" y="70" width="600" height="420" rx="40" class="chassis"/>
 
-  <!-- Device chassis outline: rounded square -->
-  <rect x="155" y="115" width="450" height="390" rx="36" class="chassis"/>
+  <!-- Trackball at center -->
+  <circle cx="410" cy="280" r="85" class="trackball"/>
+  <ellipse cx="388" cy="254" rx="26" ry="16" class="tb-shine"/>
+  <text x="410" y="280" class="tb-text">TRACKBALL</text>
 
-  <!-- Front encoder cutout bar -->
-  <rect x="195" y="468" width="370" height="22" rx="6" fill="#111" stroke="#444" stroke-width="1"/>
+  <!-- ── BUTTONS (left-right pairs, top to bottom) ── -->
 
-  <!-- Trackball center -->
-  <circle cx="380" cy="300" r="78" class="trackball"/>
-  <!-- Shine highlight -->
-  <ellipse cx="355" cy="272" rx="28" ry="18" class="tb-shine"/>
-  <text x="380" y="300" font-family="'Courier New', monospace" font-size="11" fill="rgba(255,255,255,0.35)" text-anchor="middle" dominant-baseline="central">TRACKBALL</text>
+  <!-- Row 1: Top — pos 0 (TL outer), pos 1 (TR outer) -->
+  <rect x="212" y="82" width="120" height="58" rx="10" class="btn"/>
+  <text x="272" y="104" class="num">0</text>
+  <text x="272" y="124" class="lbl">TL outer</text>
 
-  <!-- ── BUTTONS ──
-       Ordered: 0=TR, 1=TL, 2=ML-outer, 3=ML-inner, 4=BL-inner, 5=BR-inner, 6=MR-inner, 7=MR-outer
-       Wedge-shaped approx as rounded rects, rotated to face the trackball
-  -->
+  <rect x="488" y="82" width="120" height="58" rx="10" class="btn"/>
+  <text x="548" y="104" class="num">1</text>
+  <text x="548" y="124" class="lbl">TR outer</text>
 
-  <!-- btn 0 — top-right outer -->
-  <g transform="translate(530,145) rotate(-45)">
-    <rect x="-34" y="-22" width="68" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">0</text>
-    <text x="0" y="10" class="label">TR outer</text>
-  </g>
+  <!-- Row 2: Mid-outer — pos 2 (ML outer), pos 3 (MR outer) -->
+  <rect x="118" y="168" width="80" height="100" rx="10" class="btn"/>
+  <text x="158" y="208" class="num">2</text>
+  <text x="158" y="228" class="lbl">ML outer</text>
 
-  <!-- btn 1 — top-left outer -->
-  <g transform="translate(228,145) rotate(45)">
-    <rect x="-34" y="-22" width="68" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">1</text>
-    <text x="0" y="10" class="label">TL outer</text>
-  </g>
+  <rect x="622" y="168" width="80" height="100" rx="10" class="btn"/>
+  <text x="662" y="208" class="num">3</text>
+  <text x="662" y="228" class="lbl">MR outer</text>
 
-  <!-- btn 2 — mid-left outer (leftmost) -->
-  <g transform="translate(174,262) rotate(0)">
-    <rect x="-30" y="-24" width="60" height="48" rx="8" class="btn"/>
-    <text x="0" y="-6" class="num-btn">2</text>
-    <text x="0" y="10" class="label">ML outer</text>
-  </g>
+  <!-- Row 3: Mid-inner — pos 4 (ML inner), pos 5 (MR inner) -->
+  <rect x="118" y="298" width="80" height="100" rx="10" class="btn"/>
+  <text x="158" y="338" class="num">4</text>
+  <text x="158" y="358" class="lbl">ML inner</text>
 
-  <!-- btn 3 — mid-left inner -->
-  <g transform="translate(218,332) rotate(15)">
-    <rect x="-30" y="-22" width="60" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">3</text>
-    <text x="0" y="10" class="label">ML inner</text>
-  </g>
+  <rect x="622" y="298" width="80" height="100" rx="10" class="btn"/>
+  <text x="662" y="338" class="num">5</text>
+  <text x="662" y="358" class="lbl">MR inner</text>
 
-  <!-- btn 4 — bottom-left inner -->
-  <g transform="translate(262,420) rotate(45)">
-    <rect x="-34" y="-22" width="68" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">4</text>
-    <text x="0" y="10" class="label">BL inner</text>
-  </g>
+  <!-- Row 4: Bottom — pos 6 (BL inner), pos 7 (BR inner) -->
+  <rect x="212" y="418" width="120" height="58" rx="10" class="btn"/>
+  <text x="272" y="440" class="num">6</text>
+  <text x="272" y="458" class="lbl">BL inner</text>
 
-  <!-- btn 5 — bottom-right inner -->
-  <g transform="translate(500,420) rotate(-45)">
-    <rect x="-34" y="-22" width="68" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">5</text>
-    <text x="0" y="10" class="label">BR inner</text>
-  </g>
+  <rect x="488" y="418" width="120" height="58" rx="10" class="btn"/>
+  <text x="548" y="440" class="num">7</text>
+  <text x="548" y="458" class="lbl">BR inner</text>
 
-  <!-- btn 6 — mid-right inner -->
-  <g transform="translate(542,332) rotate(-15)">
-    <rect x="-30" y="-22" width="60" height="44" rx="8" class="btn"/>
-    <text x="0" y="-5" class="num-btn">6</text>
-    <text x="0" y="10" class="label">MR inner</text>
-  </g>
+  <!-- ── ENCODERS (front-mounted, bottom edge) ── -->
 
-  <!-- btn 7 — mid-right outer (rightmost) -->
-  <g transform="translate(587,262) rotate(0)">
-    <rect x="-30" y="-24" width="60" height="48" rx="8" class="btn"/>
-    <text x="0" y="-6" class="num-btn">7</text>
-    <text x="0" y="10" class="label">MR outer</text>
-  </g>
+  <!-- Left encoder wheel -->
+  <ellipse cx="220" cy="495" rx="44" ry="10" class="enc-body"/>
+  <text x="220" y="495" class="enc-lbl">LEFT ENC</text>
 
-  <!-- ── ENCODERS (front-mounted, bottom edge of device) ── -->
+  <!-- Right encoder wheel -->
+  <ellipse cx="600" cy="495" rx="44" ry="10" class="enc-body"/>
+  <text x="600" y="495" class="enc-lbl">RIGHT ENC</text>
 
-  <!-- ENC0 (left) wheel body -->
-  <ellipse cx="272" cy="479" rx="38" ry="11" class="enc-body"/>
-  <text x="272" y="479" class="enc-label">ENC0</text>
+  <!-- Left encoder action slots -->
+  <!-- pos 8 = Left CCW (scroll left) -->
+  <rect x="150" y="518" width="64" height="36" class="enc-slot" rx="6"/>
+  <text x="182" y="530" class="num-enc">8</text>
+  <text x="182" y="544" class="lbl">← CCW</text>
 
-  <!-- ENC1 (right) wheel body -->
-  <ellipse cx="490" cy="479" rx="38" ry="11" class="enc-body"/>
-  <text x="490" y="479" class="enc-label">ENC1</text>
+  <!-- pos 10 = Left CW (scroll right) -->
+  <rect x="226" y="518" width="64" height="36" class="enc-slot" rx="6"/>
+  <text x="258" y="530" class="num-enc">10</text>
+  <text x="258" y="544" class="lbl">CW →</text>
 
-  <!-- ENC0 action slots (below device) -->
-  <rect x="192" y="510" width="62" height="36" class="enc-slot" rx="6"/>
-  <text x="223" y="523" class="num-enc">8</text>
-  <text x="223" y="537" class="label">CW ↻</text>
+  <!-- Right encoder action slots -->
+  <!-- pos 11 = Right CCW (scroll left) -->
+  <rect x="528" y="518" width="64" height="36" class="enc-slot" rx="6"/>
+  <text x="560" y="530" class="num-enc">11</text>
+  <text x="560" y="544" class="lbl">← CCW</text>
 
-  <rect x="260" y="510" width="62" height="36" class="enc-slot" rx="6"/>
-  <text x="291" y="523" class="num-enc">9</text>
-  <text x="291" y="537" class="label">CCW ↺</text>
+  <!-- pos 9 = Right CW (scroll right) -->
+  <rect x="604" y="518" width="64" height="36" class="enc-slot" rx="6"/>
+  <text x="636" y="530" class="num-enc">9</text>
+  <text x="636" y="544" class="lbl">CW →</text>
 
-  <!-- ENC1 action slots (below device) -->
-  <rect x="410" y="510" width="62" height="36" class="enc-slot" rx="6"/>
-  <text x="441" y="523" class="num-enc">10</text>
-  <text x="441" y="537" class="label">CW ↻</text>
+  <!-- Connector lines -->
+  <line x1="200" y1="505" x2="182" y2="518" class="dim"/>
+  <line x1="240" y1="505" x2="258" y2="518" class="dim"/>
+  <line x1="580" y1="505" x2="560" y2="518" class="dim"/>
+  <line x1="620" y1="505" x2="636" y2="518" class="dim"/>
 
-  <rect x="478" y="510" width="62" height="36" class="enc-slot" rx="6"/>
-  <text x="509" y="523" class="num-enc">11</text>
-  <text x="509" y="537" class="label">CCW ↺</text>
+  <!-- ───── REFERENCE TABLE ───── -->
+  <rect x="30" y="580" width="760" height="148" fill="#0f0f0f" stroke="#2a2a2a" stroke-width="1" rx="6"/>
+  <text x="46" y="598" class="section">BINDING SLOT REFERENCE (per layer, default bindings shown)</text>
 
-  <!-- connector lines from encoders to slots -->
-  <line x1="272" y1="490" x2="223" y2="510" class="dim-line"/>
-  <line x1="272" y1="490" x2="291" y2="510" class="dim-line"/>
-  <line x1="490" y1="490" x2="441" y2="510" class="dim-line"/>
-  <line x1="490" y1="490" x2="509" y2="510" class="dim-line"/>
+  <text x="46" y="618" class="legend">pos 0  TL outer   (ltmkp SNIPE ENTER)       pos 1  TR outer   (ltmkp SCROLL ESC)</text>
+  <text x="46" y="636" class="legend">pos 2  ML outer   (mkp MCLK)                pos 3  MR outer   (cdch SCROLL → copy/paste)</text>
+  <text x="46" y="654" class="legend">pos 4  ML inner   (mkp LCLK)                pos 5  MR inner   (mkp RCLK)</text>
+  <text x="46" y="672" class="legend">pos 6  BL inner   (ltm EXTRAS MB4)          pos 7  BR inner   (ltm DEVICE MB5)</text>
 
-  <!-- CCW direction arc label -->
-  <text x="380" y="176" class="arrow-ccw">↺ CCW ordering from btn 0 (top-right)</text>
-
-  <!-- ─────────────────────────────────────────────────────────────
-       BINDING REFERENCE TABLE
-       ───────────────────────────────────────────────────────────── -->
-  <rect x="40" y="580" width="780" height="168" fill="#0f0f0f" stroke="#2a2a2a" stroke-width="1" rx="6"/>
-  <text x="56" y="600" class="section">BINDING SLOT REFERENCE (per layer)</text>
-
-  <!-- left column -->
-  <text x="56" y="622" class="legend">pos 0  btn: top-right outer    (Default: ltmkp SNIPE ENTER)</text>
-  <text x="56" y="638" class="legend">pos 1  btn: top-left outer     (Default: ltmkp SCROLL ESC)</text>
-  <text x="56" y="654" class="legend">pos 2  btn: mid-left outer     (Default: mkp MCLK)</text>
-  <text x="56" y="670" class="legend">pos 3  btn: mid-left inner     (Default: cdch SCROLL 0  → copy/paste/scroll)</text>
-  <text x="56" y="686" class="legend">pos 4  btn: bottom-left inner  (Default: mkp LCLK)</text>
-  <text x="56" y="702" class="legend">pos 5  btn: bottom-right inner (Default: mkp RCLK)</text>
-  <text x="56" y="718" class="legend">pos 6  btn: mid-right inner    (Default: ltm EXTRAS MB4)</text>
-  <text x="56" y="734" class="legend">pos 7  btn: mid-right outer    (Default: ltm DEVICE MB5)</text>
-
-  <!-- right column -->
-  <text x="490" y="638" class="legend">pos 8   ENC0 CW  ↻  (Default: C_VOL_UP)</text>
-  <text x="490" y="654" class="legend">pos 9   ENC0 CCW ↺  (Default: LC(TAB))</text>
-  <text x="490" y="670" class="legend">pos 10  ENC1 CW  ↻  (Default: C_VOL_DN)</text>
-  <text x="490" y="686" class="legend">pos 11  ENC1 CCW ↺  (Default: LC(LS(TAB)))</text>
-  <text x="490" y="710" class="legend" style="fill:#666;">GPIO: ENC0=gpio0.15  ENC1=gpio0.11</text>
-  <text x="490" y="726" class="legend" style="fill:#666;">Btns: gpio0.26/27/1/21/8/7/5/4 (0→7)</text>
-  <text x="490" y="742" class="legend" style="fill:#444;">Device: 102×91×24mm</text>
+  <text x="46" y="696" class="legend" style="fill:#ff9900;">LEFT ENCODER (gpio0.15)                   RIGHT ENCODER (gpio0.11)</text>
+  <text x="46" y="714" class="legend">pos 8  L CCW ← (C_VOL_UP)   pos 10 L CW → (C_VOL_DN)    pos 11 R CCW ← (prev tab)   pos 9  R CW → (next tab)</text>
 </svg>

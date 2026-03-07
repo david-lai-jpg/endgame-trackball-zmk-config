@@ -3,7 +3,7 @@
 ## Key Position Reference
 
 - **Always** reference `KEY_POSITIONS.svg` when the user gives binding slot numbers.
-- Canonical layout: **12 slots per layer** — positions 0-7 are physical buttons, 8-9 are left encoder (CW/CCW), 10-11 are right encoder (CW/CCW).
+- Canonical layout: **12 slots per layer** — positions 0-7 are physical buttons, 8-11 are encoder actions (see wiring below).
 - **Always** reference `keymap-drawer/efogtech_trackball_0.svg` to see current keymap bindings visually.
 
 ## Keymap Drawer (MANDATORY)
@@ -32,17 +32,37 @@ The GitHub Actions workflow (`.github/workflows/draw-keymap.yml`) also runs this
 | 4 | `LAYER_SNIPE` | Hold pos 0 | Trackball → precision snipe |
 | 5 | `LAYER_USER` | — | User-defined |
 
-## Button Layout (physical, top-right CCW per buttons.dtsi)
+## Button Layout (corrected via kscan0 GPIO remapping in efogtech_trackball_0.dts)
 
 ```
-[pos 0]  [pos 1]
-[pos 2]  [pos 3]
-[pos 4]  [pos 5]
-[pos 6]  [pos 7]
+Physical grid (left/right pairs, top to bottom):
 
-ENC0 CW=pos 8   ENC0 CCW=pos 9
-ENC1 CW=pos 10  ENC1 CCW=pos 11
+  [pos 0: TL outer]   [pos 1: TR outer]
+  [pos 2: ML outer]   [pos 3: MR outer]
+  [pos 4: ML inner]   [pos 5: MR inner]
+  [pos 6: BL inner]   [pos 7: BR inner]
 ```
+
+**⚠️ Do NOT trust the "top-right then CCW" comment in `buttons.dtsi`.** The `kscan0` input-gpios
+ordering in the DTS file remaps the raw GPIO order. The mapping above is the final resolved order
+used in the keymap.
+
+## Encoder Wiring (from efogtech_trackball_0.dts line 15)
+
+```c
+#define DECLARE_ENCODERS sensor-bindings = <&rotenc_follower 10 8 &rotenc_follower 9 11>
+// sensors order: <&left_encoder &right_encoder>
+```
+
+| Encoder | Action | Position | Default Binding |
+|---------|--------|----------|-----------------|
+| Left    | Scroll left (CCW)  | pos 8  | `C_VOL_UP` (Volume Up) |
+| Left    | Scroll right (CW)  | pos 10 | `C_VOL_DN` (Volume Down) |
+| Right   | Scroll left (CCW)  | pos 11 | `LC(LS(TAB))` (Prev Tab) |
+| Right   | Scroll right (CW)  | pos 9  | `LC(TAB)` (Next Tab) |
+
+**⚠️ The `rotenc_follower` macro arguments are `<CW CCW>`, so `<&rotenc_follower 10 8>` means
+left encoder CW → pos 10, CCW → pos 8.**
 
 ## Trackball Modes
 
