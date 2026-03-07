@@ -61,22 +61,29 @@ parse_config:
 
   raw_binding_map:
     # ── Layer Behaviors ───────────────────────────────────────
-    "&ltmkp LAYER_SNIPE ENTER":
-      tap: $$mdi:keyboard-return$$
+    "&ltmkp LAYER_SCROLL F2":
+      tap: F2
+      hold: Scroll
+    "&ltmkp LAYER_SCROLL F3":
+      tap: F3
+      hold: Scroll
+    "&ltmkp LAYER_SCROLL F4":
+      tap: F4
+      hold: Scroll
+    "&ltm LAYER_SNIPE RCLK":
+      tap: $$mdi:mouse-right-click-outline$$
       hold: Snipe
-    "&ltmkp LAYER_SCROLL ESC":
-      tap: $$mdi:keyboard-esc$$
-      hold: Scroll
-    "&cdch LAYER_SCROLL 0":
-      tap: Copy
-      hold: Scroll
-      shifted: Paste
-    "&ltm LAYER_EXTRAS MB4":
-      tap: MB4
-      hold: Extras
-    "&ltm LAYER_DEVICE MB5":
-      tap: MB5
+    "&ltmkp LAYER_DEVICE F12":
+      tap: F12
       hold: Device
+
+    # ── Mouse Scroll ─────────────────────────────────────────
+    "&msc SCRL_UP":
+      tap: $$mdi:arrow-up-bold$$
+      shifted: Scroll
+    "&msc SCRL_DOWN":
+      tap: $$mdi:arrow-down-bold$$
+      shifted: Scroll
 
     # ── Scroll Sensitivity ────────────────────────────────────
     "&scrlsens P2SM_INC 1":

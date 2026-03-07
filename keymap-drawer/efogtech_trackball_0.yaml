@@ -1,31 +1,18 @@
 layout: {zmk_keyboard: efogtech_trackball_0}
 layers:
   Default:
-  - {t: '$$mdi:keyboard-return$$', h: Snipe}
-  - {t: '$$mdi:keyboard-esc$$', h: Scroll}
+  - F1
+  - {t: F2, h: Scroll}
   - $$mdi:mouse-scroll-wheel$$
-  - {t: Copy, h: Scroll, s: Paste}
+  - {t: F3, h: Scroll}
   - $$mdi:mouse-left-click-outline$$
-  - $$mdi:mouse-right-click-outline$$
-  - {t: MB4, h: Extras}
-  - {t: MB5, h: Device}
-  - $$mdi:volume-high$$
-  - $$mdi:tab-plus$$
-  - $$mdi:volume-low$$
-  - $$mdi:tab-minus$$
-  Extras:
-  - Ctl+C
-  - Ctl+V
-  - Ctl+X
-  - Ctl+Z
-  - Ctl+Z
-  - Ctl+C
-  - {t: '$$mdi:transfer$$', type: trans}
-  - Ctl+V
-  - $$mdi:volume-high$$
-  - $$mdi:tab-plus$$
-  - $$mdi:volume-low$$
-  - $$mdi:tab-minus$$
+  - {t: F4, h: Scroll}
+  - {t: '$$mdi:mouse-right-click-outline$$', h: Snipe}
+  - {t: F12, h: Device}
+  - {t: '$$mdi:arrow-up-bold$$', s: Scroll}
+  - F2
+  - {t: '$$mdi:arrow-down-bold$$', s: Scroll}
+  - F1
   Device:
   - {t: '$$mdi:lightbulb-off-outline$$', s: RGB Off}
   - {t: '$$mdi:auto-fix$$', s: Effect}
@@ -65,16 +52,3 @@ layers:
   - $$mdi:arrow-right-bold$$
   - $$mdi:arrow-right-bold$$
   - $$mdi:arrow-left-bold$$
-  User:
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:volume-high$$
-  - $$mdi:tab-plus$$
-  - $$mdi:volume-low$$
-  - $$mdi:tab-minus$$

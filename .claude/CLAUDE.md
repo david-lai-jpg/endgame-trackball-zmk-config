@@ -25,12 +25,10 @@ The GitHub Actions workflow (`.github/workflows/draw-keymap.yml`) also runs this
 
 | Index | Name | Activation | Purpose |
 |-------|------|------------|---------|
-| 0 | `LAYER_DEFAULT` | Boot | Main layer: hold-taps, click, copy/paste |
-| 1 | `LAYER_EXTRAS` | Hold pos 6 (MB4) | Copy/cut/paste/undo macros |
-| 2 | `LAYER_DEVICE` | Hold pos 7 (MB5) | BT, RGB, Studio unlock, soft-off |
-| 3 | `LAYER_SCROLL` | Hold pos 1 or pos 3 | Trackball → scroll wheel |
-| 4 | `LAYER_SNIPE` | Hold pos 0 | Trackball → precision snipe |
-| 5 | `LAYER_USER` | — | User-defined |
+| 0 | `LAYER_DEFAULT` | Boot | F-keys, mouse clicks, scroll encoders |
+| 1 | `LAYER_DEVICE` | Hold pos 7 (F12) | BT, RGB, Studio unlock, soft-off |
+| 2 | `LAYER_SCROLL` | Hold pos 1, 3, or 5 | Trackball → scroll wheel |
+| 3 | `LAYER_SNIPE` | Hold pos 6 (RCLK) | Trackball → precision snipe |
 
 ## Button Layout (corrected via kscan0 GPIO remapping in efogtech_trackball_0.dts)
 
@@ -56,10 +54,10 @@ used in the keymap.
 
 | Encoder | Action | Position | Default Binding |
 |---------|--------|----------|-----------------|
-| Left    | Scroll left (CCW)  | pos 8  | `C_VOL_UP` (Volume Up) |
-| Left    | Scroll right (CW)  | pos 10 | `C_VOL_DN` (Volume Down) |
-| Right   | Scroll left (CCW)  | pos 11 | `LC(LS(TAB))` (Prev Tab) |
-| Right   | Scroll right (CW)  | pos 9  | `LC(TAB)` (Next Tab) |
+| Left    | Scroll left (CCW)  | pos 8  | `SCRL_UP` (Scroll Up) |
+| Left    | Scroll right (CW)  | pos 10 | `SCRL_DOWN` (Scroll Down) |
+| Right   | Scroll left (CCW)  | pos 11 | `F1` |
+| Right   | Scroll right (CW)  | pos 9  | `F2` |
 
 **⚠️ The `rotenc_follower` macro arguments are `<CW CCW>`, so `<&rotenc_follower 10 8>` means
 left encoder CW → pos 10, CCW → pos 8.**
@@ -76,8 +74,6 @@ Sensitivity adjustable at runtime: `scrlsens P2SM_INC/DEC 1` (scroll speed), `se
 
 | Behavior | Type | Description |
 |----------|------|-------------|
-| `cdch` | hold-tap | tap → `cdc` (copy/paste dance), hold → `&mo LAYER_SCROLL` |
-| `cdc` | tap-dance | tap → copy (`K_COPY`), double-tap → paste (`K_PASTE`) |
 | `rgb_tog` | macro | `RGB_TOG` + `EP_TOG` together |
 | `rgb_off` | macro | `EP_OFF` + `RGB_OFF` together |
 

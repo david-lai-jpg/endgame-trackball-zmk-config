@@ -8,11 +8,9 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 #define LAYER_DEFAULT      0
-#define LAYER_EXTRAS       1
-#define LAYER_DEVICE       2
-#define LAYER_SCROLL       3
-#define LAYER_SNIPE        4
-#define LAYER_USER         5
+#define LAYER_DEVICE       1
+#define LAYER_SCROLL       2
+#define LAYER_SNIPE        3
 
 #define TWIST_MULTIPLIER   1
 #define TWIST_DIVISOR      1
@@ -32,32 +30,18 @@
 			DECLARE_ENCODERS;
 			bindings = <
 				// buttons
-				&ltmkp LAYER_SNIPE ENTER  &ltmkp LAYER_SCROLL ESC
-				&mkp MCLK                 &cdch LAYER_SCROLL 0
-				&mkp LCLK                 &mkp RCLK
-				&ltm LAYER_EXTRAS MB4     &ltm LAYER_DEVICE MB5
+				&kp F1                    &ltmkp LAYER_SCROLL F2
+				&mkp MCLK                 &ltmkp LAYER_SCROLL F3
+				&mkp LCLK                 &ltmkp LAYER_SCROLL F4
+				&ltm LAYER_SNIPE RCLK     &ltmkp LAYER_DEVICE F12
 
 				// rotary encoders
-				&kp C_VOL_UP              &kp LC(TAB)
-				&kp C_VOL_DN              &kp LC(LS(TAB))
+				&msc SCRL_UP              &kp F2
+				&msc SCRL_DOWN            &kp F1
 			>;
 		};
 
 		layer2 {
-			display-name = "Extras";
-			DECLARE_ENCODERS;
-			bindings = <
-				&kp LC(C)      &kp LC(V)
-				&kp LC(X)      &kp LC(Z)
-				&kp LC(Z)      &kp LC(C)
-				&trans         &kp LC(V)
-
-				&kp C_VOL_UP   &kp LC(TAB)
-				&kp C_VOL_DN   &kp LC(LS(TAB))
-			>;
-		};
-
-		layer3 {
 			display-name = "Device";
 			DECLARE_ENCODERS;
 			bindings = <
@@ -97,59 +81,6 @@
 				&kp LEFT         &kp RIGHT
 				&kp RIGHT        &kp LEFT
 			>;
-		};
-
-		layer6 {
-			display-name = "User";
-			DECLARE_ENCODERS;
-			bindings = <
-				&trans        &trans
-				&trans        &trans
-				&trans        &trans
-				&trans        &trans
-
-				&kp C_VOL_UP  &kp LC(TAB)
-				&kp C_VOL_DN  &kp LC(LS(TAB))
-		    >;
-		};
-	};
-
-	behaviors {
-		cdch: click-double-click-hold {
-			compatible = "zmk,behavior-hold-tap";
-			display-name = "Copy/paste/layer (click/double-click/hold)";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-			tapping-term-ms = <325>;
-			bindings = <&mo>, <&cdc>;
-		};
-
-		cdc: click-double-click {
-			compatible = "zmk,behavior-tap-dance";
-			display-name = "Copy/paste (click/double-click)";
-			#binding-cells = <0>;
-			tapping-term-ms = <300>;
-			bindings = <&kp K_COPY>, <&kp K_PASTE>;
-		};
-	};
-
-	trackball {
-		input-processors = <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
-						   <&zip_pointer_accel>, <&zip_scroll_accel>,
-						   <&zip_rotate_pointer>, <&zip_rotate_scroll>,
-		                   <&zip_ble_report_rate_limit>;
-
-		scroll {
-			layers = <LAYER_SCROLL>;
-			input-processors = <&zip_xy_scaler SCROLL_MULTIPLIER SCROLL_DIVISOR>, <&zip_axis_clamper>,
-							   <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-							   <&zip_scroll_accel>, <&zip_rotate_scroll>, <&zip_ble_report_rate_limit>;
-		};
-
-		snipe {
-			layers = <LAYER_SNIPE>;
-			input-processors = <&zip_xy_scaler SNIPE_MULTIPLIER SNIPE_DIVISOR>,
-							   <&zip_rotate_pointer>, <&zip_rotate_scroll>, <&zip_ble_report_rate_limit>;
 		};
 	};
 

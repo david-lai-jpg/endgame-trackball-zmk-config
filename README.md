@@ -27,20 +27,20 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 | Layer | Index | Name | Activation |
 |-------|-------|------|------------|
 | 0 | `LAYER_DEFAULT` | Default | Boot |
-| 1 | `LAYER_EXTRAS` | Extras | Hold MB4 (pos 6) |
-| 2 | `LAYER_DEVICE` | Device | Hold MB5 (pos 7) |
-| 3 | `LAYER_SCROLL` | Scroll | Hold pos 1 or pos 3 |
-| 4 | `LAYER_SNIPE` | Snipe | Hold pos 0 |
-| 5 | `LAYER_USER` | User | — |
+| 1 | `LAYER_DEVICE` | Device | Hold pos 7 (F12) |
+| 2 | `LAYER_SCROLL` | Scroll | Hold pos 1, 3, or 5 |
+| 3 | `LAYER_SNIPE` | Snipe | Hold pos 6 (RCLK) |
 
 ## Features
 
-- **Hold-tap buttons** — layer activation on hold, click on tap (pos 0, 1, 3, 6, 7)
-- **Tap-dance copy/paste** — single tap = copy, double tap = paste (pos 3)
+- **Hold-tap buttons** — layer activation on hold, tap on release (pos 1, 3, 5, 6, 7)
+- **F-key grid** — F1 (pos 0), F2 (pos 1), F3 (pos 3), F4 (pos 5), F12 (pos 7)
+- **Mouse buttons** — left click (pos 4), middle click (pos 2), right click (pos 6)
+- **Scroll encoders** — left encoder: scroll up/down
+- **F-key encoders** — right encoder: F1/F2
 - **Scroll mode** — `LAYER_SCROLL` switches trackball to scroll wheel with configurable sensitivity
 - **Snipe mode** — `LAYER_SNIPE` activates precision low-speed cursor movement
 - **Scroll/snipe sensitivity** — adjustable at runtime via `scrlsens`/`sens` bindings
-- **Encoder volume/tab** — left encoder: volume up/down; right encoder: Ctrl+Tab / Ctrl+Shift+Tab
 - **RGB macros** — `rgb_tog` (toggle + ext power), `rgb_off` (off + ext power off)
 - **Bluetooth** — BT_CLR, BT_NXT, BT_PRV on Device layer
 - **ZMK Studio** — `studio_unlock` on Device layer; USB logging enabled
@@ -80,7 +80,7 @@ boards/arm/efogtech_trackball_0/
 └── pinctrl.dtsi                    # SPI/I2C pin control
 
 config/
-├── efogtech_trackball_0.keymap     # Keymap (6 layers, 12 slots each)
+├── efogtech_trackball_0.keymap     # Keymap (4 layers, 12 slots each)
 ├── efogtech_trackball_0.conf       # Runtime config overrides
 └── west.yml                        # West manifest (ZMK + efog modules)
 
