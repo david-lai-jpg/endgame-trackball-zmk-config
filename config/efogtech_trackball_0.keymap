@@ -13,7 +13,7 @@
 #define LAYER_SNIPE        3
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      1
+#define TWIST_DIVISOR      10
 
 #define SCROLL_MULTIPLIER  1
 #define SCROLL_DIVISOR     3
