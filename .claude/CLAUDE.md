@@ -26,11 +26,9 @@ The GitHub Actions workflow (`.github/workflows/draw-keymap.yml`) also runs this
 | Index | Name | Activation | Purpose |
 |-------|------|------------|---------|
 | 0 | `LAYER_DEFAULT` | Boot | Main layer: hold-taps, click, copy/paste |
-| 1 | `LAYER_EXTRAS` | Hold pos 6 (MB4) | Copy/cut/paste/undo macros |
-| 2 | `LAYER_DEVICE` | Hold pos 7 (MB5) | BT, RGB, Studio unlock, soft-off |
-| 3 | `LAYER_SCROLL` | Hold pos 1 or pos 3 | Trackball → scroll wheel |
-| 4 | `LAYER_SNIPE` | Hold pos 0 | Trackball → precision snipe |
-| 5 | `LAYER_USER` | — | User-defined |
+| 1 | `LAYER_DEVICE` | Hold pos 7 (MB5) | BT, RGB, Studio unlock, soft-off |
+| 2 | `LAYER_SCROLL` | Hold pos 1 or pos 3 | Trackball → scroll wheel |
+| 3 | `LAYER_SNIPE` | Hold pos 0 | Trackball → precision snipe |
 
 ## Button Layout (corrected via kscan0 GPIO remapping in efogtech_trackball_0.dts)
 
@@ -84,3 +82,12 @@ Sensitivity adjustable at runtime: `scrlsens P2SM_INC/DEC 1` (scroll speed), `se
 ## Adding New Bindings
 
 When adding a custom behavior binding to the keymap, ALWAYS add a corresponding entry to `keymap_drawer.config.yaml` → `parse_config.raw_binding_map` with `tap`/`hold`/`shifted` labels and/or MDI icons. Otherwise it renders as raw text.
+
+## Hold-Tap Layer Activation Pattern
+
+When the user wants a "click + hold" duo key (tap for action, hold for layer activation):
+
+- **Mouse button on tap**: use `&ltm <LAYER> <BUTTON>` (e.g., `&ltm LAYER_SNIPE RCLK`)
+- **Keyboard key on tap**: use `&ltmkp <LAYER> <KEYCODE>` (e.g., `&ltmkp LAYER_SNIPE ENTER`)
+
+Always add a corresponding `raw_binding_map` entry in `keymap_drawer.config.yaml` so it renders properly in the SVG.

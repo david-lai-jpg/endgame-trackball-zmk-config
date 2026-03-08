@@ -27,15 +27,13 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 | Layer | Index | Name | Activation |
 |-------|-------|------|------------|
 | 0 | `LAYER_DEFAULT` | Default | Boot |
-| 1 | `LAYER_EXTRAS` | Extras | Hold MB4 (pos 6) |
-| 2 | `LAYER_DEVICE` | Device | Hold MB5 (pos 7) |
-| 3 | `LAYER_SCROLL` | Scroll | Hold pos 1 or pos 3 |
-| 4 | `LAYER_SNIPE` | Snipe | Hold pos 0 |
-| 5 | `LAYER_USER` | User | — |
+| 1 | `LAYER_DEVICE` | Device | Hold MB5 (pos 7) |
+| 2 | `LAYER_SCROLL` | Scroll | Hold pos 1 or pos 3 |
+| 3 | `LAYER_SNIPE` | Snipe | Hold pos 0 |
 
 ## Features
 
-- **Hold-tap buttons** — layer activation on hold, click on tap (pos 0, 1, 3, 6, 7)
+- **Hold-tap buttons** — layer activation on hold, click on tap (pos 0, 1, 3, 7)
 - **Tap-dance copy/paste** — single tap = copy, double tap = paste (pos 3)
 - **Scroll mode** — `LAYER_SCROLL` switches trackball to scroll wheel with configurable sensitivity
 - **Snipe mode** — `LAYER_SNIPE` activates precision low-speed cursor movement
