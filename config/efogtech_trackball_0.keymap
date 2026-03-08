@@ -18,13 +18,15 @@
 #define TWIST_DIVISOR      10
 
 #define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     6
+#define SCROLL_DIVISOR     16
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
 
 #define POINTER_MULTIPLIER 6
 #define POINTER_DIVISOR    5
+
+#define ENC_SCROLL sensor-bindings = <&scroll_encoder &rotenc_follower 9 11>
 
 &msc {
 	acceleration-exponent = <1>;
@@ -38,7 +40,7 @@
 
 		default_layer {
 			display-name = "Default";
-			DECLARE_ENCODERS;
+			ENC_SCROLL;
 			bindings = <
 				// buttons
 				&ltmkp LAYER_SNIPE F1     &ltmkp LAYER_SCROLL F2
@@ -46,9 +48,9 @@
 				&mkp LCLK                 &cdc
 				&ltm LAYER_SNIPE RCLK     &ltmkp LAYER_DEVICE F12
 
-				// rotary encoders
-				&msc SCRL_UP              &kp F2
-				&msc SCRL_DOWN            &kp F1
+				// rotary encoders (left = scroll_encoder, right = follower)
+				&none                     &kp F2
+				&none                     &kp F1
 			>;
 		};
 
@@ -82,15 +84,16 @@
 
 		layer4 {
 			display-name = "Snipe";
-			DECLARE_ENCODERS;
+			ENC_SCROLL;
 			bindings = <
 				&trans           &trans
 				&trans           &trans
 				&trans           &trans
 				&trans           &soft_off
 
-				&msc SCRL_UP     &sens P2SM_INC 1
-				&msc SCRL_DOWN   &sens P2SM_DEC 1
+				// left = scroll_encoder, right = follower
+				&none            &sens P2SM_INC 1
+				&none            &sens P2SM_DEC 1
 			>;
 		};
 
@@ -112,6 +115,14 @@
 			#binding-cells = <0>;
 			tapping-term-ms = <300>;
 			bindings = <&kp K_COPY>, <&kp K_PASTE>;
+		};
+
+		scroll_encoder: scroll_encoder {
+			compatible = "zmk,behavior-sensor-rotate";
+			display-name = "Encoder scroll";
+			#sensor-binding-cells = <0>;
+			bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+			tap-ms = <30>;
 		};
 	};
 

@@ -9,9 +9,9 @@ layers:
   - {t: Copy, s: Paste}
   - {t: '$$mdi:mouse-right-click-outline$$', h: Snipe}
   - {t: F12, h: Device}
-  - {t: '$$mdi:arrow-up-bold$$', s: Scroll}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - F2
-  - {t: '$$mdi:arrow-down-bold$$', s: Scroll}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - F1
   Device:
   - {t: '$$mdi:lightbulb-off-outline$$', s: RGB Off}
@@ -48,7 +48,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:power-sleep$$
-  - {t: '$$mdi:arrow-up-bold$$', s: Scroll}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
-  - {t: '$$mdi:arrow-down-bold$$', s: Scroll}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
