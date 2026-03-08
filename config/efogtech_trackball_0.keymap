@@ -1,3 +1,5 @@
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -6,8 +8,6 @@
 #include <dt-bindings/zmk/p2sm.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
-
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
 #define LAYER_DEFAULT      0
 #define LAYER_DEVICE       1
@@ -18,7 +18,7 @@
 #define TWIST_DIVISOR      10
 
 #define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     16
+#define SCROLL_DIVISOR     18
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
