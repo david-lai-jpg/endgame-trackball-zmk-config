@@ -18,7 +18,7 @@
 #define TWIST_DIVISOR      10
 
 #define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     48
+#define SCROLL_DIVISOR     42
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
@@ -121,7 +121,7 @@
 			compatible = "zmk,behavior-sensor-rotate";
 			#sensor-binding-cells = <0>;
 			bindings = <&msc MOVE_UP>, <&msc MOVE_DOWN>;
-			tap-ms = <10>;
+			tap-ms = <50>;
 		};
 	};
 
