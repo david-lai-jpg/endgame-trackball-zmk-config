@@ -16,10 +16,13 @@
 #define TWIST_DIVISOR      10
 
 #define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     3
+#define SCROLL_DIVISOR     6
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
+
+#define POINTER_MULTIPLIER 6
+#define POINTER_DIVISOR    5
 
 / {
 	keymap {
@@ -105,7 +108,8 @@
 	};
 
 	trackball {
-		input-processors = <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
+		input-processors = <&zip_xy_scaler POINTER_MULTIPLIER POINTER_DIVISOR>,
+						   <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
 						   <&zip_pointer_accel>, <&zip_scroll_accel>,
 						   <&zip_rotate_pointer>, <&zip_rotate_scroll>,
 		                   <&zip_ble_report_rate_limit>;
