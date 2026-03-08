@@ -29,8 +29,8 @@
 #define ENC_SCROLL sensor-bindings = <&scroll_encoder &rotenc_follower 9 11>
 
 &msc {
-	acceleration-exponent = <1>;
-	time-to-max-speed-ms = <100>;
+	acceleration-exponent = <0>;
+	time-to-max-speed-ms = <300>;
 	delay-ms = <0>;
 };
 
