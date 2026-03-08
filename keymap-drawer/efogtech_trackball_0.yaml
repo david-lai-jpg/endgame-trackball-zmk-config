@@ -20,7 +20,7 @@ layers:
   - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
   - {t: '$$mdi:lightbulb-on-outline$$', s: Toggle}
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
-  - {t: '$$mdi:lock-open-outline$$', s: Studio}
+  - $$mdi:play-pause$$
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:volume-high$$
   - $$mdi:skip-next$$
@@ -29,26 +29,26 @@ layers:
   Scroll:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:rotate-right$$', s: RstRot}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:rotate-right$$', s: RstRot}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
   - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
-  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
   - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
-  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
+  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
   Snipe:
   - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:power-sleep$$
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-right-bold$$
-  - $$mdi:arrow-right-bold$$
-  - $$mdi:arrow-left-bold$$
+  - {t: '$$mdi:arrow-up-bold$$', s: Scroll}
+  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:arrow-down-bold$$', s: Scroll}
+  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}

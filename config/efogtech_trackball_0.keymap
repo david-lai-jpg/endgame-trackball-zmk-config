@@ -48,7 +48,7 @@
 				&rgb_off           &rgb_ug RGB_EFF
 				&bt BT_CLR         &bt BT_NXT
 				&rgb_tog           &bt BT_PRV
-				&studio_unlock     &trans
+				&kp C_PP           &trans
 
 				&kp C_VOL_UP       &kp C_NEXT
 				&kp C_VOL_DN       &kp C_PREV
@@ -60,12 +60,12 @@
 			DECLARE_ENCODERS;
 			bindings = <
 			    &trans              &trans
+			    &rrl 1              &trans
 			    &trans              &scrlsens P2SM_INC 1
-			    &rrl 1              &scrlsens P2SM_DEC 1
-			    &sens P2SM_DEC 1    &sens P2SM_INC 1
+			    &trans              &scrlsens P2SM_DEC 1
 
-				&sens P2SM_DEC 1    &scrlsens P2SM_INC 1
-				&sens P2SM_INC 1    &scrlsens P2SM_DEC 1
+				&scrlsens P2SM_DEC 1    &sens P2SM_INC 1
+				&scrlsens P2SM_INC 1    &sens P2SM_DEC 1
 			>;
 		};
 
@@ -73,13 +73,13 @@
 			display-name = "Snipe";
 			DECLARE_ENCODERS;
 			bindings = <
+				&trans           &trans
+				&trans           &trans
+				&trans           &trans
 				&trans           &soft_off
-				&trans           &trans
-				&trans           &trans
-				&trans           &trans
 
-				&kp LEFT         &kp RIGHT
-				&kp RIGHT        &kp LEFT
+				&msc SCRL_UP     &sens P2SM_INC 1
+				&msc SCRL_DOWN   &sens P2SM_DEC 1
 			>;
 		};
 

@@ -135,9 +135,6 @@ parse_config:
       shifted: $$mdi:bluetooth-connect$$
 
     # ── System ────────────────────────────────────────────────
-    "&studio_unlock":
-      tap: $$mdi:lock-open-outline$$
-      shifted: Studio
     "&soft_off":
       tap: $$mdi:power-sleep$$
 
