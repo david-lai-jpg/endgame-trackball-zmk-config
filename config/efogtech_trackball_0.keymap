@@ -27,7 +27,6 @@
 #define POINTER_DIVISOR    5
 
 #define ENC_SCROLL sensor-bindings = <&scroll_encoder &rotenc_follower 9 11>
-#define ENC_PGSCROLL sensor-bindings = <&pgscroll_encoder &rotenc_follower 9 11>
 
 &msc {
 	acceleration-exponent = <1>;
@@ -41,7 +40,7 @@
 
 		default_layer {
 			display-name = "Default";
-			ENC_PGSCROLL;
+			ENC_SCROLL;
 			bindings = <
 				// buttons
 				&ltmkp LAYER_SNIPE F1     &ltmkp LAYER_SCROLL F2
@@ -121,14 +120,7 @@
 		scroll_encoder: scroll_encoder {
 			compatible = "zmk,behavior-sensor-rotate";
 			#sensor-binding-cells = <0>;
-			bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-			tap-ms = <30>;
-		};
-
-		pgscroll_encoder: pgscroll_encoder {
-			compatible = "zmk,behavior-sensor-rotate";
-			#sensor-binding-cells = <0>;
-			bindings = <&kp PG_UP>, <&kp PG_DN>;
+			bindings = <&msc MOVE_UP>, <&msc MOVE_DOWN>;
 			tap-ms = <30>;
 		};
 	};
