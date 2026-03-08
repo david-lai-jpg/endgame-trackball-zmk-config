@@ -15,10 +15,10 @@
 #define LAYER_SNIPE        3
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      10
+#define TWIST_DIVISOR      48
 
 #define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     42
+#define SCROLL_DIVISOR     48
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
