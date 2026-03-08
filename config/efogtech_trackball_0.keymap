@@ -58,7 +58,7 @@
 			display-name = "Device";
 			DECLARE_ENCODERS;
 			bindings = <
-				&rgb_off           &rgb_ug RGB_EFF
+				&soft_off          &rgb_ug RGB_EFF
 				&bt BT_CLR         &bt BT_NXT
 				&rgb_tog           &bt BT_PRV
 				&kp C_PP           &trans
@@ -89,7 +89,7 @@
 				&trans           &trans
 				&trans           &trans
 				&trans           &trans
-				&trans           &soft_off
+				&trans           &trans
 
 				// left = scroll_encoder, right = follower
 				&none            &sens P2SM_INC 1

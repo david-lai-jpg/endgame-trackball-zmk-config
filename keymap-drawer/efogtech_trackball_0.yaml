@@ -14,7 +14,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - F1
   Device:
-  - {t: '$$mdi:lightbulb-off-outline$$', s: RGB Off}
+  - $$mdi:power-sleep$$
   - {t: '$$mdi:auto-fix$$', s: Effect}
   - $$mdi:bluetooth-off$$
   - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
@@ -47,7 +47,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:power-sleep$$
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
