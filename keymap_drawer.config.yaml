@@ -101,6 +101,17 @@ parse_config:
       tap: $$mdi:mouse-right-click-outline$$
     "&mkp MCLK":
       tap: $$mdi:mouse-scroll-wheel$$
+    "&cdc":
+      tap: Copy
+      shifted: Paste
+
+    # ── Scroll ───────────────────────────────────────────────
+    "&msc SCRL_UP":
+      tap: $$mdi:arrow-up-bold$$
+      shifted: Scroll
+    "&msc SCRL_DOWN":
+      tap: $$mdi:arrow-down-bold$$
+      shifted: Scroll
 
     # ── RGB ───────────────────────────────────────────────────
     "&rgb_tog":

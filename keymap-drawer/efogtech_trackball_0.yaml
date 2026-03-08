@@ -6,12 +6,12 @@ layers:
   - $$mdi:mouse-scroll-wheel$$
   - {t: F3, h: Scroll}
   - $$mdi:mouse-left-click-outline$$
-  - $$mdi:mouse-right-click-outline$$
+  - {t: Copy, s: Paste}
   - {t: '$$mdi:mouse-right-click-outline$$', h: Snipe}
   - {t: F12, h: Device}
-  - $$mdi:volume-high$$
+  - {t: '$$mdi:arrow-up-bold$$', s: Scroll}
   - F2
-  - $$mdi:volume-low$$
+  - {t: '$$mdi:arrow-down-bold$$', s: Scroll}
   - F1
   Device:
   - {t: '$$mdi:lightbulb-off-outline$$', s: RGB Off}

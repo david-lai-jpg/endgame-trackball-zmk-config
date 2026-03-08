@@ -32,12 +32,12 @@
 				// buttons
 				&ltmkp LAYER_SNIPE F1     &ltmkp LAYER_SCROLL F2
 				&mkp MCLK                 &ltmkp LAYER_SCROLL F3
-				&mkp LCLK                 &mkp RCLK
+				&mkp LCLK                 &cdc
 				&ltm LAYER_SNIPE RCLK     &ltmkp LAYER_DEVICE F12
 
 				// rotary encoders
-				&kp C_VOL_UP              &kp F2
-				&kp C_VOL_DN              &kp F1
+				&msc SCRL_UP              &kp F2
+				&msc SCRL_DOWN            &kp F1
 			>;
 		};
 
