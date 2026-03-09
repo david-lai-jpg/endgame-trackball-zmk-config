@@ -3,16 +3,16 @@ layers:
   Default:
   - {t: F1, h: Snipe}
   - {t: F2, h: Scroll}
-  - $$mdi:mouse-scroll-wheel$$
+  - F12
   - {t: F3, h: Scroll}
   - $$mdi:mouse-left-click-outline$$
-  - {t: Copy, s: Paste}
-  - {t: '$$mdi:mouse-right-click-outline$$', h: Snipe}
-  - {t: F12, h: Device}
+  - {t: '$$mdi:mouse-right-click-outline$$', h: Scroll}
+  - {t: '$$mdi:mouse-left-click-outline$$', h: Snipe}
+  - {t: '$$mdi:mouse-right-click-outline$$', h: Device}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - F2
+  - $$mdi:volume-high$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - F1
+  - $$mdi:volume-low$$
   Device:
   - $$mdi:power-sleep$$
   - {t: '$$mdi:auto-fix$$', s: Effect}
@@ -29,16 +29,16 @@ layers:
   Scroll:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:rotate-right$$', s: RstRot}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:minus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
-  - {t: '$$mdi:plus-circle-outline$$', s: ScrlSpd}
-  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   Snipe:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -48,7 +48,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:plus-circle-outline$$', s: SnipSpd}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', s: SnipSpd}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}

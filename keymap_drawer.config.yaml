@@ -70,9 +70,18 @@ parse_config:
     "&ltmkp LAYER_SCROLL F3":
       tap: F3
       hold: Scroll
+    "&ltm LAYER_SCROLL RCLK":
+      tap: $$mdi:mouse-right-click-outline$$
+      hold: Scroll
+    "&ltm LAYER_SNIPE LCLK":
+      tap: $$mdi:mouse-left-click-outline$$
+      hold: Snipe
     "&ltm LAYER_SNIPE RCLK":
       tap: $$mdi:mouse-right-click-outline$$
       hold: Snipe
+    "&ltm LAYER_DEVICE RCLK":
+      tap: $$mdi:mouse-right-click-outline$$
+      hold: Device
     "&ltmkp LAYER_DEVICE F12":
       tap: F12
       hold: Device
