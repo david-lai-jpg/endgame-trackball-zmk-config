@@ -15,13 +15,13 @@ layers:
   - $$mdi:volume-low$$
   Device:
   - $$mdi:power-sleep$$
-  - {t: '$$mdi:auto-fix$$', s: Effect}
+  - {t: MUI, s: Adv}
   - $$mdi:bluetooth-off$$
   - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
-  - {t: '$$mdi:lightbulb-on-outline$$', s: Toggle}
+  - {t: OS, s: Toggle}
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
   - $$mdi:play-pause$$
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:lock-open-variant-outline$$', s: Studio}
   - $$mdi:volume-high$$
   - $$mdi:skip-next$$
   - $$mdi:volume-low$$

@@ -1,6 +1,6 @@
 # Endgame Trackball ZMK Config
 
-Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a compact wireless trackball device (nRF52833) with 8 physical buttons, 2 rotary encoders, a PMW3610 trackball, RGB underglow (WS2812), and ZMK Studio support.
+Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a compact wireless trackball device (nRF52833) with 8 physical buttons, 2 rotary encoders, PMW3610 tracking, WS2812 feedback LEDs, and ZMK Studio support.
 
 ## Hardware
 
@@ -10,9 +10,9 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 | Sensor | PMW3610 trackball |
 | Keys | 8 physical buttons |
 | Encoders | 2 × EC11 rotary encoders |
-| RGB | WS2812 underglow |
+| LEDs | WS2812 adaptive feedback |
 | USB VID/PID | `0x0011` / `0x0006` (efog.tech) |
-| Firmware version | `0.4.3` |
+| Firmware baseline | `main` through `endgame-1.3.5` |
 
 ## Key Positions
 
@@ -34,30 +34,30 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 ## Features
 
 - **Hold-tap buttons** — layer activation on hold, click on tap (pos 0, 1, 3, 7)
-- **Tap-dance copy/paste** — single tap = copy, double tap = paste (pos 3)
-- **Scroll mode** — `LAYER_SCROLL` switches trackball to scroll wheel with configurable sensitivity
+- **Scroll mode** — `LAYER_SCROLL` switches trackball to scroll wheel processing
 - **Snipe mode** — `LAYER_SNIPE` activates precision low-speed cursor movement
-- **Scroll/snipe sensitivity** — adjustable at runtime via `scrlsens`/`sens` bindings
-- **Encoder volume/tab** — left encoder: volume up/down; right encoder: Ctrl+Tab / Ctrl+Shift+Tab
-- **RGB macros** — `rgb_tog` (toggle + ext power), `rgb_off` (off + ext power off)
+- **Runtime scaling** — main's bistable/runtime scaler stack handles pointer, twist, scroll, and snipe scaling
+- **Encoder scroll/volume** — left encoder scrolls on Default/Snipe; right encoder controls volume on Default/Snipe
+- **Device media** — Device layer exposes play/pause plus next/previous on encoders
 - **Bluetooth** — BT_CLR, BT_NXT, BT_PRV on Device layer
-- **ZMK Studio** — `studio_unlock` on Device layer; USB logging enabled
-- **Soft off** — `soft_off` on Snipe layer for deep sleep
+- **Main runtime controls** — MUI advertise, OS-dependent behavior toggle, and ZMK Studio unlock on Device layer
+- **Soft off** — `soft_off` on Device layer for deep sleep
 
 ## Trackball Input Processing (Default Layer)
 
 ```
-trackball → zip_scroll_scaler (twist: 1/1)
+trackball → zip_bistable_twist_scaler
           → zip_pointer_accel
           → zip_scroll_accel
           → zip_rotate_pointer
           → zip_rotate_scroll
+          → esb_ip
           → zip_ble_report_rate_limit
 ```
 
-**Scroll layer** (`LAYER_SCROLL`): `zip_xy_scaler (1/3)` → `zip_axis_clamper` → `zip_xy_to_scroll_mapper` → Y-invert → accel → rotate → rate-limit
+**Scroll layer** (`LAYER_SCROLL`): `zip_bistable_scroll_xy_scaler` → `zip_axis_clamper` → `zip_xy_to_scroll_mapper` → Y-invert → drag-scroll accel → rotate → ESB → rate-limit
 
-**Snipe layer** (`LAYER_SNIPE`): `zip_xy_scaler (1/4)` → rotate → rate-limit
+**Snipe layer** (`LAYER_SNIPE`): `zip_bistable_snipe_scaler` → rotate → ESB → rate-limit
 
 ## Building
 
@@ -69,16 +69,16 @@ Releases are published automatically on push to `main`. The paw3395 sensor varia
 
 ```
 boards/arm/efogtech_trackball_0/
-├── efogtech_trackball_0_defconfig  # Board config (version, PMW3610, BLE, RGB, Studio)
+├── efogtech_trackball_0_defconfig  # Board config (PMW3610, BLE, feedback, Studio)
 ├── efogtech_trackball_0.dts        # Device tree
 ├── buttons.dtsi                    # 8-button + 2-encoder GPIO mapping
 ├── encoders.dtsi                   # EC11 encoder definitions
 ├── pointer.dtsi                    # PMW3610 trackball + input processors
-├── visuals.dtsi                    # WS2812 RGB underglow
+├── visuals.dtsi                    # WS2812 adaptive feedback
 └── pinctrl.dtsi                    # SPI/I2C pin control
 
 config/
-├── efogtech_trackball_0.keymap     # Keymap (6 layers, 12 slots each)
+├── efogtech_trackball_0.keymap     # Keymap (4 layers, 12 slots each)
 ├── efogtech_trackball_0.conf       # Runtime config overrides
 └── west.yml                        # West manifest (ZMK + efog modules)
 

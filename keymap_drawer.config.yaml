@@ -122,16 +122,16 @@ parse_config:
       tap: $$mdi:arrow-down-bold$$
       shifted: Scroll
 
-    # ── RGB ───────────────────────────────────────────────────
-    "&rgb_tog":
-      tap: $$mdi:lightbulb-on-outline$$
+    # ── Runtime / adaptive feedback ──────────────────────────
+    "&zbs_adv":
+      tap: MUI
+      shifted: Adv
+    "&bst_tog ZBS_TOG":
+      tap: OS
       shifted: Toggle
-    "&rgb_off":
-      tap: $$mdi:lightbulb-off-outline$$
-      shifted: RGB Off
-    "&rgb_ug RGB_EFF":
-      tap: $$mdi:auto-fix$$
-      shifted: Effect
+    "&af_toggle AF_TOG":
+      tap: $$mdi:gesture-tap-button$$
+      shifted: Feedback
 
     # ── Bluetooth ─────────────────────────────────────────────
     "&bt BT_CLR":
@@ -146,6 +146,9 @@ parse_config:
     # ── System ────────────────────────────────────────────────
     "&soft_off":
       tap: $$mdi:power-sleep$$
+    "&studio_unlock":
+      tap: $$mdi:lock-open-variant-outline$$
+      shifted: Studio
 
     # ── None ──────────────────────────────────────────────────
     "&none":
