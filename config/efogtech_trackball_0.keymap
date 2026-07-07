@@ -32,9 +32,9 @@
 				&mkp LCLK                 &ltm LAYER_SCROLL RCLK
 				&ltm LAYER_SNIPE LCLK     &ltm LAYER_DEVICE RCLK
 
-				// rotary encoders (left = scroll, right = volume)
-				&none                     &kp C_VOL_UP
-				&none                     &kp C_VOL_DN
+				// rotary encoders (left = scroll, right = tab switching)
+				&none                     &kp LC(TAB)
+				&none                     &kp LC(LS(TAB))
 			>;
 		};
 
@@ -44,7 +44,7 @@
 			bindings = <
 				&soft_off          &zbs_adv
 				&bt BT_CLR         &bt BT_NXT
-				&bst_tog ZBS_TOG   &bt BT_PRV
+				&kp C_MUTE         &bt BT_PRV
 				&kp C_PP           &studio_unlock
 
 				&kp C_VOL_UP       &kp C_NEXT

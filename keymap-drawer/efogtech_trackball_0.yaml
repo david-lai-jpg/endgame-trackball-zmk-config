@@ -10,15 +10,15 @@ layers:
   - {t: '$$mdi:mouse-left-click-outline$$', h: Snipe}
   - {t: '$$mdi:mouse-right-click-outline$$', h: Device}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:volume-high$$
+  - $$mdi:tab-plus$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:volume-low$$
+  - $$mdi:tab-minus$$
   Device:
   - $$mdi:power-sleep$$
   - {t: MUI, s: Adv}
   - $$mdi:bluetooth-off$$
   - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
-  - {t: OS, s: Toggle}
+  - $$mdi:volume-off$$
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
   - $$mdi:play-pause$$
   - {t: '$$mdi:lock-open-variant-outline$$', s: Studio}
