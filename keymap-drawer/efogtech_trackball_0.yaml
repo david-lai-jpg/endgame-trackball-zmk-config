@@ -9,9 +9,9 @@ layers:
   - {t: '$$mdi:mouse-right-click-outline$$', h: Scroll}
   - {t: '$$mdi:mouse-left-click-outline$$', h: Snipe}
   - {t: '$$mdi:mouse-right-click-outline$$', h: Device}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - F1
   - $$mdi:tab-plus$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - F2
   - $$mdi:tab-minus$$
   Device:
   - $$mdi:power-sleep$$
@@ -22,9 +22,9 @@ layers:
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
   - $$mdi:play-pause$$
   - {t: '$$mdi:lock-open-variant-outline$$', s: Studio}
-  - $$mdi:volume-high$$
-  - $$mdi:skip-next$$
   - $$mdi:volume-low$$
+  - $$mdi:skip-next$$
+  - $$mdi:volume-high$$
   - $$mdi:skip-previous$$
   Scroll:
   - {t: '$$mdi:transfer$$', type: trans}

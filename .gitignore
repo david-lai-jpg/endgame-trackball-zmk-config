@@ -8,4 +8,4 @@ zmk-pmw3610-driver
 zmk-input-processor-mixer
 zmk-pointer-2s-mixer
 tasks/
-
+.DS_Store

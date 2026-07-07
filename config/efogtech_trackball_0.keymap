@@ -22,7 +22,7 @@
 
 		default_layer {
 			display-name = "Default";
-			ENC_SCROLL;
+			DECLARE_ENCODERS;
 			bindings = <
 				// buttons
 				&ltmkp LAYER_SNIPE F1     &ltmkp LAYER_SCROLL F2
@@ -30,9 +30,9 @@
 				&mkp LCLK                 &ltm LAYER_SCROLL RCLK
 				&ltm LAYER_SNIPE LCLK     &ltm LAYER_DEVICE RCLK
 
-				// rotary encoders (left = scroll, right = tab switching)
-				&none                     &kp LC(TAB)
-				&none                     &kp LC(LS(TAB))
+				// rotary encoders (left = F1/F2, right = tab switching)
+				&kp F1                    &kp LC(TAB)
+				&kp F2                    &kp LC(LS(TAB))
 			>;
 		};
 
@@ -45,8 +45,8 @@
 				&kp C_MUTE         &bt BT_PRV
 				&kp C_PP           &studio_unlock
 
-				&kp C_VOL_UP       &kp C_NEXT
-				&kp C_VOL_DN       &kp C_PREV
+				&kp C_VOL_DN       &kp C_NEXT
+				&kp C_VOL_UP       &kp C_PREV
 			>;
 		};
 
