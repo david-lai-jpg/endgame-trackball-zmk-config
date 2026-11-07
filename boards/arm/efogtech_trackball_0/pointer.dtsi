@@ -17,9 +17,9 @@
 &zip_2s_mixer {
 	status = "okay";
 	sync-report-ms = <1>;
-	// Twist sends at most one wheel report per (this + 1) ms. 8 gave visible
-	// multi-line chunks on macOS once wheel values were honored; 4 halves them.
-	sync-scroll-report-ms = <4>;
+	// Keep 8. Tried 4 on 2026-11-07: cursor, drag and twist all felt floaty and
+	// jumpy (likely more brief false twists, which pause the cursor).
+	sync-scroll-report-ms = <8>;
 
 	// arbitrary bounding box (0, 0, 0) - (255, 255, 255)
 	ball-radius = <102>; // maximum = 127, center is at (127, 127, 127)
