@@ -16,7 +16,7 @@ No acceleration curve, by choice (David, 2026-11-07): the cursor moves at a fixe
 
 ## Scroll (2026-11-07)
 
-Used mostly on macOS (with SteerMouse wheel mode "Linear" for the Endgame), sometimes on Windows. Default OS mode is macOS: `bistable set 1`, `rtcfg set bst/default 1`. Switch the trackball to Windows mode (slot 0) on Windows.
+Used mostly on macOS (with SteerMouse wheel mode "Linear" for the Endgame), sometimes on Windows. Default OS mode is macOS: `bistable set 1`, `rtcfg set bst/default 1`. Switch the trackball to Windows mode (slot 0) on Windows: hold the Device-layer button (pos 7) and press pos 4 (OS toggle, flashes cyan), or `bistable set 0`. The chosen mode is saved and survives restarts.
 
 - macOS mode: `rtcfg set bst/twist/s1_div 1`, `rtcfg set bst/dragscroll/s1_div 1` (no divide before the curve)
 - Windows mode: `rtcfg set bst/twist/s0_div 3`, `rtcfg set bst/dragscroll/s0_div 3` (Windows scrolls 3 lines per unit, macOS 1)

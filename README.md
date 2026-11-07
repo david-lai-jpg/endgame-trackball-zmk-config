@@ -38,9 +38,9 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 - **Snipe mode** — `LAYER_SNIPE` activates precision low-speed cursor movement
 - **Runtime scaling** — main's bistable/runtime scaler stack handles pointer, twist, scroll, and snipe scaling
 - **Encoder shortcuts/tab switching** — left encoder sends F1/F2 on Default; right encoder switches tabs on Default; Snipe keeps left-encoder scroll
-- **Device media** — Device layer exposes mute, play/pause, plus next/previous on encoders
+- **Device media** — Device layer exposes play/pause, plus volume and next/previous on encoders
 - **Bluetooth** — BT_CLR, BT_NXT, BT_PRV on Device layer
-- **Main runtime controls** — MUI advertise and ZMK Studio unlock on Device layer
+- **Main runtime controls** — MUI advertise, Windows/macOS mode toggle (`bst_tog`, pos 4; it selects the OS scroll dividers and is saved across restarts) and ZMK Studio unlock on Device layer
 - **Soft off** — `soft_off` on Device layer for deep sleep
 
 ## Trackball Input Processing (Default Layer)

@@ -42,7 +42,7 @@
 			bindings = <
 				&soft_off          &zbs_adv
 				&bt BT_CLR         &bt BT_NXT
-				&kp C_MUTE         &bt BT_PRV
+				&bst_tog ZBS_TOG   &bt BT_PRV
 				&kp C_PP           &studio_unlock
 
 				&kp C_VOL_DN       &kp C_NEXT
