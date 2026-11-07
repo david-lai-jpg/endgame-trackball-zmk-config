@@ -18,7 +18,7 @@ layers:
   - {t: MUI, s: Adv}
   - $$mdi:bluetooth-off$$
   - {t: '$$mdi:arrow-right-bold$$', s: '$$mdi:bluetooth-connect$$'}
-  - $$mdi:volume-off$$
+  - {t: OS, s: Toggle}
   - {t: '$$mdi:arrow-left-bold$$', s: '$$mdi:bluetooth-connect$$'}
   - $$mdi:play-pause$$
   - {t: '$$mdi:lock-open-variant-outline$$', s: Studio}
