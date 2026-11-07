@@ -27,6 +27,12 @@
 	feedback-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
 	feedback-extra-gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
 	twist-feedback-delay = <5>;
+
+	// 0 = off. The default (200) drops a whole twist step when its roll part is
+	// over 200 counts per ~9 ms step, so fast, big twists did not register.
+	// The relative twist-vs-roll check (p2sm/twist_dy_mag_*) still guards
+	// against accidental twist scroll.
+	twist-interference-thres = <0>;
 };
 
 / {
