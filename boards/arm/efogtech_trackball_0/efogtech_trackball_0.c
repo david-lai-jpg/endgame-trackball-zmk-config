@@ -45,15 +45,16 @@ static int cmd_version(const struct shell *sh, const size_t argc, char **argv) {
 }
 
 static int cmd_output(const struct shell *sh, const size_t argc, char **argv) {
-    if (zmk_endpoints_selected().transport == ZMK_TRANSPORT_USB) {
-        shprint(sh, "Output: USB");
-    } else if (IS_ENABLED(CONFIG_ZMK_ESB_ENDPOINT) &&
-               zmk_ble_active_profile_index() == (ZMK_BLE_PROFILE_COUNT - 1)) {
+    if (IS_ENABLED(CONFIG_ZMK_ESB_ENDPOINT) && zmk_ble_active_profile_index() == (ZMK_BLE_PROFILE_COUNT - 1)) {
         if (zmk_esb_endpoint_is_active()) {
             shprint(sh, "Output: ESB");
+        } else if (zmk_endpoints_selected().transport == ZMK_TRANSPORT_USB) {
+            shprint(sh, "Output: USB");
         } else {
-            shprint(sh, "Output: ESB (inactive)");
+            LOG_ERR("Unexpected: can't determine the output!");
         }
+    } else if (zmk_endpoints_selected().transport == ZMK_TRANSPORT_USB) {
+        shprint(sh, "Output: USB");
     } else {
         shprint(sh, "Output: BLE");
     }
@@ -68,15 +69,14 @@ static int cmd_status(const struct shell *sh, const size_t argc, char **argv) {
 }
 
 static int cmd_reboot(const struct shell *sh, const size_t argc, char **argv) {
-    shprint(sh, "Rebooting device...");
+    shprint(sh, "Rebooting.");
     k_sleep(K_MSEC(100));
     sys_reboot(SYS_REBOOT_COLD);
 }
 
-static int cmd_erase(const struct shell *sh, const size_t argc, char **argv) {
-    shprint(sh, "I hope you know what you're doing.");
-    k_sleep(K_MSEC(100));
+void clear_all_bonds() {
     bt_unpair(BT_ID_DEFAULT, NULL);
+    zmk_ble_clear_all_bonds();
 
     for (int i = 0; i < 8; i++) {
         char setting_name[16];
@@ -97,7 +97,16 @@ static int cmd_erase(const struct shell *sh, const size_t argc, char **argv) {
             LOG_ERR("Failed to delete setting: %d", err);
         }
     }
+}
 
+static int cmd_bt_unpair(const struct shell *sh, const size_t argc, char **argv) {
+    clear_all_bonds();
+    shprint(sh, "All Bluetooth bonds removed. Please restart the device. ");
+    return 0;
+}
+
+static int cmd_erase(const struct shell *sh, const size_t argc, char **argv) {
+    clear_all_bonds();
     return zmk_settings_erase();
 }
 
@@ -279,7 +288,7 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
     }
 
     static uint8_t chunk[BACKUP_CHUNK_SIZE] = { 0 };
-    size_t chunk_len = strlen(hexdata) / 2;
+    const size_t chunk_len = strlen(hexdata) / 2;
     if (chunk_len > BACKUP_CHUNK_SIZE) {
         shprint(sh, "Chunk too large");
         log_restore_error();
@@ -338,6 +347,12 @@ static uint8_t crc8_checksum(const uint8_t *data, const size_t len) {
     return crc;
 }
 
+static const struct device *p0 = DEVICE_DT_GET(DT_NODELABEL(gpio0));
+static const struct device *p1 = DEVICE_DT_GET(DT_NODELABEL(gpio1));
+static const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(uart0));
+
+static int16_t settings_log_source_id = -1;
+static uint32_t settings_log_saved_level;
 static bool rgb_supported = false;
 static bool rgb_override = false;
 
@@ -353,7 +368,33 @@ static int rgb_settings_set(const char *name, size_t len, const settings_read_cb
     return -ENOENT;
 }
 
-SETTINGS_STATIC_HANDLER_DEFINE(board_rgb, "board/rgb", NULL, rgb_settings_set, NULL, NULL);
+static int rgb_settings_commit() {
+    if (rgb_override) {
+        rgb_supported = true;
+    } else {
+        gpio_pin_configure(p0, 11, GPIO_INPUT | GPIO_PULL_DOWN);
+        gpio_pin_configure(p0, 15, GPIO_INPUT | GPIO_PULL_DOWN);
+
+        if (gpio_pin_get(p0, 11) && gpio_pin_get(p0, 15)) {
+            zaf_set_rgb_not_supported();
+            LOG_WRN("RGB not supported on this hardware!");
+        } else {
+            rgb_supported = true;
+        }
+
+        gpio_pin_configure(p0, 11, GPIO_DISCONNECTED);
+        gpio_pin_configure(p0, 15, GPIO_DISCONNECTED);
+    }
+
+    if (settings_log_source_id >= 0) {
+        log_filter_set(NULL, CONFIG_LOG_DOMAIN_ID, settings_log_source_id, settings_log_saved_level);
+        settings_log_source_id = -1;
+    }
+
+    return 0;
+}
+
+SETTINGS_STATIC_HANDLER_DEFINE(board_rgb, "board/rgb", NULL, rgb_settings_set, rgb_settings_commit, NULL);
 
 static int cmd_check_rgb(const struct shell *sh, const size_t argc, char **argv) {
     if (argc == 1) {
@@ -409,7 +450,7 @@ static int cmd_backup(const struct shell *sh, const size_t argc, char **argv) {
     uint8_t buf[BACKUP_CHUNK_SIZE];
     uint32_t offset = 0;
     while (offset < storage_size) {
-        size_t chunk = (offset + BACKUP_CHUNK_SIZE <= storage_size) ? BACKUP_CHUNK_SIZE : (storage_size - offset);
+        const size_t chunk = (offset + BACKUP_CHUNK_SIZE <= storage_size) ? BACKUP_CHUNK_SIZE : (storage_size - offset);
         memcpy(buf, (void *)(storage_addr + offset), chunk);
         const uint8_t chk = crc8_checksum(buf, chunk);
         printf("%08X:", offset);
@@ -433,6 +474,7 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_board,
     SHELL_CMD(status, NULL, "Show device status", cmd_status),
     SHELL_CMD(output, NULL, "See current output", cmd_output),
     SHELL_CMD(reboot, NULL, "Reboot the device", cmd_reboot),
+    SHELL_CMD(unpair, NULL, "Remove all BLE bonds", cmd_bt_unpair),
     SHELL_CMD(erase, NULL, "Erase all settings", cmd_erase),
     SHELL_CMD(version, NULL, "Read firmware version", cmd_version),
     SHELL_CMD(layers, NULL, "List all layers", cmd_layers),
@@ -444,13 +486,6 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_board,
 
 SHELL_CMD_REGISTER(board, &sub_board, "Control the device", NULL);
 #endif
-
-static const struct device *p0 = DEVICE_DT_GET(DT_NODELABEL(gpio0));
-static const struct device *p1 = DEVICE_DT_GET(DT_NODELABEL(gpio1));
-static const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(uart0));
-
-static int16_t settings_log_source_id = -1;
-static uint32_t settings_log_saved_level;
 
 static void set_3v3_en(const bool en) {
     gpio_pin_configure(p1, 0, GPIO_OUTPUT);
@@ -466,34 +501,6 @@ static void set_bl_en(const bool en) {
     gpio_pin_configure(p0, 20, GPIO_OUTPUT);
     gpio_pin_set(p0, 20, en);
 }
-
-static void rgb_hw_check_work_handler(struct k_work *work) {
-    settings_load_subtree("board/rgb");
-
-    if (rgb_override) {
-        rgb_supported = true;
-    } else {
-        gpio_pin_configure(p0, 11, GPIO_INPUT | GPIO_PULL_DOWN);
-        gpio_pin_configure(p0, 15, GPIO_INPUT | GPIO_PULL_DOWN);
-
-        if (gpio_pin_get(p0, 11) && gpio_pin_get(p0, 15)) {
-            zaf_set_rgb_not_supported();
-            LOG_WRN("RGB not supported on this hardware!");
-        } else {
-            rgb_supported = true;
-        }
-
-        gpio_pin_configure(p0, 11, GPIO_DISCONNECTED);
-        gpio_pin_configure(p0, 15, GPIO_DISCONNECTED);
-    }
-
-    if (settings_log_source_id >= 0) {
-        log_filter_set(NULL, CONFIG_LOG_DOMAIN_ID, settings_log_source_id, settings_log_saved_level);
-        settings_log_source_id = -1;
-    }
-}
-
-static K_WORK_DELAYABLE_DEFINE(rgb_hw_check_work, rgb_hw_check_work_handler);
 
 static int pinmux_efgtch_trckbl_init(void) {
     pm_device_action_run(uart, PM_DEVICE_ACTION_SUSPEND);
@@ -514,7 +521,6 @@ static int pinmux_efgtch_trckbl_init(void) {
     }
 #endif
 
-    k_work_schedule(&rgb_hw_check_work, K_MSEC(100));
     return 0;
 }
 

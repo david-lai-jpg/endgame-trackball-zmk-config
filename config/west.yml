@@ -1,20 +1,18 @@
 manifest:
   remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
     - name: efogdev
       url-base: https://github.com/efogdev
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: "v0.3.0"
+      remote: efogdev
+      revision: "a3f7e5c7"
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: efogdev
-      revision: "28482ee"
+      revision: "b5de934"
     - name: zmk-pointer-2s-mixer
       remote: efogdev
-      revision: "bf35da8"
+      revision: "21e94d2"
     - name: zmk-axis-clamper
       remote: efogdev
       revision: "637719f"
@@ -23,13 +21,13 @@ manifest:
       revision: "20e0742"
     - name: zmk-ec11-ish-driver
       remote: efogdev
-      revision: "404ae01"
+      revision: "7b0828b"
     - name: zmk-auto-hold
       remote: efogdev
-      revision: "8b11f48"
+      revision: "e3b649f"
     - name: zmk-adaptive-feedback
       remote: efogdev
-      revision: "82f83d1"
+      revision: "c90c877"
     - name: zmk-behavior-follower
       remote: efogdev
       revision: "c27fe57"
@@ -38,28 +36,28 @@ manifest:
       revision: "b712a64"
     - name: zmk-acceleration-curves
       remote: efogdev
-      revision: "2f9197f"
+      revision: "09a49e1"
     - name: zmk-input-processor-rotate-plane
       remote: efogdev
-      revision: "b0b2684"
+      revision: "86901be"
     - name: zmk-runtime-config
       remote: efogdev
-      revision: "4d1eb80"
+      revision: "55fabb6"
     - name: zmk-bistable-behavior
       remote: efogdev
-      revision: "e70f0af"
+      revision: "652ae06"
     - name: zmk-ble-shell
       remote: efogdev
-      revision: "6322b7a"
+      revision: "3aa9bfa"
     - name: zmk-esb-endpoint
       remote: efogdev
-      revision: "aa090f4"
+      revision: "d482f54"
       submodules: true
     - name: zmk-feedback-common
       remote: efogdev
       revision: "92251ce"
     - name: zmk-shell-relay-core
       remote: efogdev
-      revision: "c6da53f"
+      revision: "7dbb118"
   self:
     path: config

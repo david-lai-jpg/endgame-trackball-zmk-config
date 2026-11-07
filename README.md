@@ -12,7 +12,7 @@ Personal [ZMK](https://zmk.dev/) firmware for the **efog.tech Endgame** — a co
 | Encoders | 2 × EC11 rotary encoders |
 | LEDs | WS2812 adaptive feedback |
 | USB VID/PID | `0x0011` / `0x0006` (efog.tech) |
-| Firmware baseline | `main` through `endgame-1.3.5` |
+| Firmware baseline | Upstream `endgame-1.6.2` (`e86f1b9`) with personal controls |
 
 ## Key Positions
 
@@ -50,14 +50,15 @@ trackball → zip_bistable_twist_scaler
           → zip_pointer_accel
           → zip_scroll_accel
           → zip_rotate_pointer
-          → zip_rotate_scroll
           → esb_ip
           → zip_ble_report_rate_limit
 ```
 
 **Scroll layer** (`LAYER_SCROLL`): `zip_bistable_scroll_xy_scaler` → `zip_axis_clamper` → `zip_xy_to_scroll_mapper` → Y-invert → drag-scroll accel → rotate → ESB → rate-limit
 
-**Snipe layer** (`LAYER_SNIPE`): `zip_bistable_snipe_scaler` → rotate → ESB → rate-limit
+**Snipe layer** (`LAYER_SNIPE`): `zip_bistable_snipe_scaler` → pointer rotate → ESB → rate-limit
+
+The 1.6.2 update keeps the personal four-layer keymap, encoder directions, runtime overrides, and recorded pointer curve. It also keeps the previous capacity of four simultaneous hold-tap buttons; upstream's lower limit can drop button presses with this layout. The Device-layer MUI button keeps its single-click action; upstream's new double-click dongle shortcut is not assigned. Pointer processing follows upstream's rotation fixes.
 
 ## Building
 

@@ -1,3 +1,9 @@
+---
+summary: Personal pointer acceleration curve saved for the trackball settings interface.
+read_when:
+  - restoring or preserving personal pointer acceleration settings
+---
+
 # Personal Marshmellow UI Notes
 
 Pointer curve:
