@@ -17,7 +17,9 @@
 &zip_2s_mixer {
 	status = "okay";
 	sync-report-ms = <1>;
-	sync-scroll-report-ms = <8>;
+	// Twist sends at most one wheel report per (this + 1) ms. 8 gave visible
+	// multi-line chunks on macOS once wheel values were honored; 4 halves them.
+	sync-scroll-report-ms = <4>;
 
 	// arbitrary bounding box (0, 0, 0) - (255, 255, 255)
 	ball-radius = <102>; // maximum = 127, center is at (127, 127, 127)
