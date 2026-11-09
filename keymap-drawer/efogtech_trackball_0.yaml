@@ -1,9 +1,9 @@
 layout: {zmk_keyboard: efogtech_trackball_0}
 layers:
   Default:
-  - {t: F12, h: Snipe}
+  - {t: F1, h: Snipe}
   - {t: F2, h: Scroll}
-  - F1
+  - F12
   - {t: F3, h: Scroll}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:mouse-right-click-outline$$', h: Scroll}
