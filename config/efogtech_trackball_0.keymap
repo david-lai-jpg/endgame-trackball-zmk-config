@@ -25,8 +25,8 @@
 			DECLARE_ENCODERS;
 			bindings = <
 				// buttons
-				&ltmkp LAYER_SNIPE F1     &ltmkp LAYER_SCROLL F2
-				&kp F12                   &ltmkp LAYER_SCROLL F3
+				&ltmkp LAYER_SNIPE F12    &ltmkp LAYER_SCROLL F2
+				&kp F1                    &ltmkp LAYER_SCROLL F3
 				&mkp LCLK                 &ltm LAYER_SCROLL RCLK
 				&ltm LAYER_SNIPE LCLK     &ltm LAYER_DEVICE RCLK
 

@@ -61,8 +61,8 @@ parse_config:
 
   raw_binding_map:
     # ── Layer Behaviors ───────────────────────────────────────
-    "&ltmkp LAYER_SNIPE F1":
-      tap: F1
+    "&ltmkp LAYER_SNIPE F12":
+      tap: F12
       hold: Snipe
     "&ltmkp LAYER_SCROLL F2":
       tap: F2
