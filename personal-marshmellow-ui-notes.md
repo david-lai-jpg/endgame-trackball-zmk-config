@@ -22,6 +22,7 @@ Used mostly on macOS (with SteerMouse wheel mode "Linear" for the Endgame), some
 - Windows mode: `rtcfg set bst/twist/s0_div 3`, `rtcfg set bst/dragscroll/s0_div 3` (Windows scrolls 3 lines per unit, macOS 1)
 - `curve set scroll 0 0 100 9 10 9 10 9 100 9 6000 40 2000 9 4000 40` (twist: 0.09x up to step ~8, smooth rise to 0.40x at step 60)
 - `curve set dragscroll 0 0 100 6 10 6 10 6 100 6 6000 21 2000 6 4000 21` (drag: 0.06x, smooth rise to 0.21x at step 60)
+- Left-right drag boost (2026-11-10): `rtcfg set bst/dragscroll_x/s1_mult 20`, `rtcfg set bst/dragscroll_x/s1_div 10` (2.0x, the firmware default; `s0_*` for Windows mode). Reason: measured with `curve monitor` and a macOS scroll tap, equal ball input gives equal lines in both directions, but a normal left-right stroke turns the ball less and slower than an up-down stroke (about one third of the steps in slow strokes). Not the cause, each tested: twist detection (off made no difference), the axis clamper (never locks with `ac/history_ttl` 0), macOS (1 unit = 1 line both ways).
 - `p2sm sens twist set 150` (15%)
 - Twist detection: `rtcfg set p2sm/twist_dy_mag_mul 3`, `rtcfg set p2sm/twist_dy_mag_div 2` (start needs twist > 1.5x roll, default 2x), `rtcfg set p2sm/twist_act_ms 8` (default 25), `rtcfg set p2sm/twist_deb 15` (default 35), `rtcfg set p2sm/twist_hyst_mul 1` + `rtcfg set p2sm/twist_hyst_div 1` (continuation needs twist > roll, default 7/6), `rtcfg set p2sm/twist_ttl 120` (default 65). Tighten these first if twist scroll starts by accident.
 

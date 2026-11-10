@@ -54,7 +54,7 @@ trackball → zip_bistable_twist_scaler
           → zip_ble_report_rate_limit
 ```
 
-**Scroll layer** (`LAYER_SCROLL`): `zip_bistable_scroll_xy_scaler` → `zip_axis_clamper` → `zip_xy_to_scroll_mapper` → Y-invert → drag-scroll accel → rotate → ESB → rate-limit
+**Scroll layer** (`LAYER_SCROLL`): `zip_bistable_scroll_xy_scaler` → `zip_bistable_scroll_x_scaler` (left-right boost) → `zip_axis_clamper` → `zip_xy_to_scroll_mapper` → Y-invert → drag-scroll accel → rotate → ESB → rate-limit
 
 **Snipe layer** (`LAYER_SNIPE`): `zip_bistable_snipe_scaler` → pointer rotate → ESB → rate-limit
 
