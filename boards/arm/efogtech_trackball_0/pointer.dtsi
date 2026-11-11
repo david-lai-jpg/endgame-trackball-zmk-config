@@ -85,18 +85,19 @@
 		zrc-prefix = "bst/dragscroll";
 	};
 
-	// Left-right boost for drag scroll, before the curve (so slow scroll keeps
-	// 1-line steps). A normal left-right stroke turns the ball less than an
-	// up-down stroke (measured 2026-11-10); firmware and macOS treat both
-	// directions the same. Tune live: rtcfg set bst/dragscroll_x/s1_mult <n>
-	// (s0_* in Windows mode); boost = mult / div.
+	// Left-right gain for drag scroll, before the curve (so slow scroll keeps
+	// 1-line steps). The trackball itself sends equal left-right and up-down
+	// (measured 2026-11-11); slow left-right scroll on macOS was a SteerMouse
+	// setting (see personal-marshmellow-ui-notes.md). Tune live:
+	// rtcfg set bst/dragscroll_x/s1_mult <n> (s0_* in Windows mode);
+	// gain = mult / div, 10/10 = off.
 	zip_bistable_scroll_x_scaler: zip_bistable_scroll_x_scaler {
 		compatible = "zmk,input-processor-bistable-scaler";
 		#input-processor-cells = <0>;
 		type = <INPUT_EV_REL>;
 		codes = <INPUT_REL_X>;
 		track-remainders;
-		default-coef = <ZBS_SCALE(20, 10)>;
+		default-coef = <ZBS_SCALE(10, 10)>;
 		slot0 = <ZBS_RUNTIME>;
 		slot1 = <ZBS_RUNTIME>;
 		zrc-prefix = "bst/dragscroll_x";
