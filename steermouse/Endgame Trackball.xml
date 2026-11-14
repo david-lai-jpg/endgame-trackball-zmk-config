@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>personalities</key>
+	<array>
+		<!-- Endgame trackball on the USB cable -->
+		<dict>
+			<key>vid</key>
+			<integer>0x0011</integer>
+			<key>pid</key>
+			<integer>0x0006</integer>
+		</dict>
+		<!-- Endgame on Bluetooth. Every ZMK Bluetooth device reports this ID. -->
+		<dict>
+			<key>vid</key>
+			<integer>0x1D50</integer>
+			<key>pid</key>
+			<integer>0x615E</integer>
+		</dict>
+	</array>
+	<key>hScrollOp</key>
+	<string>Roll</string>
+</dict>
+</plist>

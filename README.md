@@ -60,6 +60,10 @@ trackball → zip_bistable_twist_scaler
 
 The 1.6.2 update keeps the personal four-layer keymap, encoder directions, runtime overrides, and recorded pointer curve. It also keeps the previous capacity of four simultaneous hold-tap buttons; upstream's lower limit can drop button presses with this layout. The Device-layer MUI button keeps its single-click action; upstream's new double-click dongle shortcut is not assigned. Pointer processing follows upstream's rotation fixes.
 
+## macOS Setup (SteerMouse)
+
+On the Mac, SteerMouse needs one device file and four wheel rows so that left-right drag scroll follows the ball like up-down. This setup is on the Mac, not in the firmware. If left-right scroll jumps or SteerMouse was reset, follow [steermouse/steermouse-setup.md](steermouse/steermouse-setup.md). Trackball-side scroll values are in [personal-marshmellow-ui-notes.md](personal-marshmellow-ui-notes.md).
+
 ## Building
 
 Firmware builds automatically via GitHub Actions on every push. Download artifacts from the [latest successful run](../../actions/workflows/build.yml).
@@ -90,6 +94,11 @@ config/
 keymap-drawer/
 └── efogtech_trackball_0.svg        # Generated keymap visualization
 
+steermouse/
+├── steermouse-setup.md             # Check and restore the SteerMouse setup on macOS
+└── Endgame Trackball.xml           # Copy of the SteerMouse device file (left-right = rolling wheel)
+
+personal-marshmellow-ui-notes.md    # Scroll and pointer values saved on the trackball, with reasons
 keymap_drawer.config.yaml           # keymap-drawer rendering config
 KEY_POSITIONS.svg                   # 12-position reference diagram
 ```
