@@ -29,8 +29,8 @@ trackball report, the same rule as up-down.
 ## Signs that the setup is lost
 
 - Left-right drag scroll jumps or runs far while up-down is normal.
-- In SteerMouse, the Endgame's Wheel tab shows Tilt Left / Tilt Right and no
-  Roll Left / Roll Right.
+- In SteerMouse, the Endgame's Wheel tab has no Roll Left / Roll Right rows, or
+  they are not set to Scroll, Linear.
 
 ## Check
 
@@ -47,7 +47,13 @@ trackball report, the same rule as up-down.
    | Roll Left | Scroll, Linear |
    | Roll Right | Scroll, Linear |
 
-   Tilt rows must not be shown for the Endgame.
+   Not checked on 2026-11-14: whether the window still lists Tilt rows next to
+   the Roll rows. Old Tilt settings stay in the saved store but have no effect
+   once the file is loaded.
+3. Check without the window that the file is loaded: in the decoded settings
+   store (see "Facts"), the device rows "Endgame" (USB) and "Endgame BT"
+   (Bluetooth Low Energy) carry the value `Roll` after the helper has started
+   with the file in place. Before, that value is absent.
 
 ## Put it back
 
@@ -85,10 +91,18 @@ trackball report, the same rule as up-down.
   append. A tap placed with head insert sees the events before SteerMouse
   changes them.
 
-## Test status
+## Test status (2026-11-14, SteerMouse 5.8.2)
 
-- Cable: verified 2026-11-14. Apps received only the trackball's own events,
-  each a 10-point step in both directions; 0.62 points per unit of ball movement
-  left-right against 0.64 up-down.
-- Bluetooth: the ID was added to the file on 2026-11-14. Not yet loaded or
-  tested on that day.
+Measured with a scroll event tap placed after SteerMouse (tail append).
+
+- Cable, file with the cable ID only: apps received only the trackball's own
+  events, each a 10-point step in both directions; 0.62 points per unit of ball
+  movement left-right against 0.64 up-down. User: "worked perfectly".
+- Bluetooth, file as committed here (both IDs): before the helper restart,
+  left-right was SteerMouse's timed steps. After the restart and with Roll Left /
+  Roll Right = Scroll, Linear, left-right was 178 trackball events and up-down
+  186, every one a 10-point step, none made by SteerMouse. User: "works
+  perfectly now".
+- Not measured: the cable with the committed two-ID file. The cable part of the
+  file is the same text as in the tested version, and the store shows `Roll` on
+  the cable entry. If left-right scroll is wrong on the cable, check this first.
